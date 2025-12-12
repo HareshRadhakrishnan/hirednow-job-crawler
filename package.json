@@ -8,7 +8,6 @@
     "prebuild": "npm install",
     "start": "next start",
     "lint": "eslint"
-
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
@@ -23,6 +22,7 @@
     "puppeteer": "^24.32.1",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "react-markdown": "^10.1.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
