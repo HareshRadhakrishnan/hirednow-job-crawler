@@ -1,0 +1,19 @@
+services:
+  job-crawler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: job-crawler
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    restart: unless-stopped
+    # Puppeteer requires these security settings
+    security_opt:
+      - seccomp:unconfined
+    # Recommended for Chromium in Docker
+    shm_size: "1gb"
+
+

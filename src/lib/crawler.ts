@@ -27,7 +27,20 @@ export async function crawlAwignJobs(jobRole: string): Promise<CrawlResult> {
   try {
     browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+        "--single-process",
+        "--no-zygote",
+        "--disable-crash-reporter",
+        "--disable-breakpad",
+        "--disable-background-networking",
+        "--disable-extensions",
+      ],
     });
 
     const page: Page = await browser.newPage();
@@ -199,7 +212,20 @@ export async function crawlAwignJobsSimple(jobRole: string): Promise<CrawlResult
   try {
     browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+        "--single-process",
+        "--no-zygote",
+        "--disable-crash-reporter",
+        "--disable-breakpad",
+        "--disable-background-networking",
+        "--disable-extensions",
+      ],
     });
 
     const page: Page = await browser.newPage();
@@ -379,16 +405,24 @@ export async function crawlIndeedJobs(
     // Launch with stealth-like settings
     browser = await puppeteer.launch({
       headless: true,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+        "--single-process",
+        "--no-zygote",
         "--disable-blink-features=AutomationControlled",
         "--disable-infobars",
-        "--disable-dev-shm-usage",
         "--disable-accelerated-2d-canvas",
-        "--disable-gpu",
         "--window-size=1920,1080",
         "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "--disable-crash-reporter",
+        "--disable-breakpad",
+        "--disable-background-networking",
+        "--disable-extensions",
       ],
     });
 
@@ -630,16 +664,24 @@ export async function fetchSingleJobUrl(jobUrl: string): Promise<SingleJobResult
     
     browser = await puppeteer.launch({
       headless: true,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+        "--single-process",
+        "--no-zygote",
         "--disable-blink-features=AutomationControlled",
         "--disable-infobars",
-        "--disable-dev-shm-usage",
         "--disable-accelerated-2d-canvas",
-        "--disable-gpu",
         "--window-size=1920,1080",
         "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "--disable-crash-reporter",
+        "--disable-breakpad",
+        "--disable-background-networking",
+        "--disable-extensions",
       ],
     });
 
